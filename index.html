@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partitura na Mão | Partituras Musicais de Qualidade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="light-effect"></div>
+    <div class="light-effect-2"></div>
+    
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="Partitura na Mão" class="logo">
+                <h1>Partitura na Mão</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#colecoes">Coleções</a></li>
+                    <li><a href="#combos">Combos</a></li>
+                    <li><a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Partituras de Qualidade para Músicos Exigentes</h2>
+            <p>Encontre as melhores partituras para seu instrumento, com arranjos profissionais e preços acessíveis.</p>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Busque por partituras...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <img src="imagens/capa.jpg" alt="Partituras musicais" class="hero-image">
+    </section>
+
+    <section id="colecoes" class="instrument-collections">
+        <div class="container">
+            <h2 class="section-title">Nossas <span>Coleções</span></h2>
+            <p class="section-subtitle">Encontre partituras para seu instrumento favorito</p>
+            
+            <div class="instrument-grid">
+                <!-- Flauta -->
+                <div class="instrument-card" data-instrument="flauta">
+                    <div class="card-image">
+                        <img src="img/flauta-card.jpg" alt="Partituras para Flauta">
+                        <div class="card-overlay">
+                            <a href="flauta.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Flauta</h3>
+                        <p>Partituras clássicas e contemporâneas</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 19,90</span>
+                            <a href="flauta.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clarinete -->
+                <div class="instrument-card" data-instrument="clarinete">
+                    <div class="card-image">
+                        <img src="img/clarinete-card.jpg" alt="Partituras para Clarinete">
+                        <div class="card-overlay">
+                            <a href="clarinete.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Clarinete</h3>
+                        <p>Repertório completo para clarinetistas</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 22,90</span>
+                            <a href="clarinete.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sax Alto -->
+                <div class="instrument-card" data-instrument="sax-alto">
+                    <div class="card-image">
+                        <img src="img/sax-alto-card.jpg" alt="Partituras para Sax Alto">
+                        <div class="card-overlay">
+                            <a href="sax-alto.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Sax Alto</h3>
+                        <p>Jazz, clássico e MPB para saxofonistas</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 24,90</span>
+                            <a href="sax-alto.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sax Tenor -->
+                <div class="instrument-card" data-instrument="sax-tenor">
+                    <div class="card-image">
+                        <img src="img/sax-tenor-card.jpg" alt="Partituras para Sax Tenor">
+                        <div class="card-overlay">
+                            <a href="sax-tenor.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Sax Tenor</h3>
+                        <p>Solos e arranjos para sax tenor</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 24,90</span>
+                            <a href="sax-tenor.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trompete -->
+                <div class="instrument-card" data-instrument="trompete">
+                    <div class="card-image">
+                        <img src="img/trompete-card.jpg" alt="Partituras para Trompete">
+                        <div class="card-overlay">
+                            <a href="trompete.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Trompete</h3>
+                        <p>Partituras para trompetistas de todos os níveis</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 21,90</span>
+                            <a href="trompete.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trombone -->
+                <div class="instrument-card" data-instrument="trombone">
+                    <div class="card-image">
+                        <img src="img/trombone-card.jpg" alt="Partituras para Trombone">
+                        <div class="card-overlay">
+                            <a href="trombone.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Trombone</h3>
+                        <p>Repertório clássico e contemporâneo</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 23,90</span>
+                            <a href="trombone.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Violino -->
+                <div class="instrument-card" data-instrument="violino">
+                    <div class="card-image">
+                        <img src="img/violino-card.jpg" alt="Partituras para Violino">
+                        <div class="card-overlay">
+                            <a href="violino.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Violino</h3>
+                        <p>Partituras para violinistas de todos os estilos</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 25,90</span>
+                            <a href="violino.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Viola -->
+                <div class="instrument-card" data-instrument="viola">
+                    <div class="card-image">
+                        <img src="img/viola-card.jpg" alt="Partituras para Viola">
+                        <div class="card-overlay">
+                            <a href="viola.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Viola</h3>
+                        <p>Repertório especializado para violistas</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 26,90</span>
+                            <a href="viola.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Violoncelo -->
+                <div class="instrument-card" data-instrument="violoncelo">
+                    <div class="card-image">
+                        <img src="img/violoncelo-card.jpg" alt="Partituras para Violoncelo">
+                        <div class="card-overlay">
+                            <a href="violoncelo.html" class="btn btn-primary">Ver Partituras</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Violoncelo</h3>
+                        <p>Partituras para violoncelistas exigentes</p>
+                        <div class="card-actions">
+                            <span class="price">A partir de R$ 27,90</span>
+                            <a href="violoncelo.html" class="btn btn-gold">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="combos" class="promo-combos">
+        <div class="container">
+            <h2 class="section-title">Combos <span>Promocionais</span></h2>
+            <p class="section-subtitle">Economize com nossos pacotes especiais</p>
+            
+            <div class="combo-grid">
+                <div class="combo-card combo-highlight">
+                    <div class="combo-header">
+                        <h3>Pacote Orquestra</h3>
+                        <div class="combo-price">
+                            <span class="old-price">R$ 299,90</span>
+                            <span class="new-price">R$ 249,90</span>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10 partituras de sua escolha</li>
+                            <li><i class="fas fa-check"></i> Arranjos exclusivos</li>
+                            <li><i class="fas fa-check"></i> Suporte por email</li>
+                            <li><i class="fas fa-check"></i> 15% de desconto</li>
+                            <li><i class="fas fa-check"></i> Bônus: Partitura surpresa</li>
+                        </ul>
+                        <button class="btn btn-gold btn-block">Comprar Pacote</button>
+                    </div>
+                </div>
+                
+                <div class="combo-card">
+                    <div class="combo-header">
+                        <h3>Pacote Jazz</h3>
+                        <div class="combo-price">
+                            <span class="old-price">R$ 199,90</span>
+                            <span class="new-price">R$ 169,90</span>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 5 partituras de jazz</li>
+                            <li><i class="fas fa-check"></i> Standards e improvisação</li>
+                            <li><i class="fas fa-check"></i> 15% de desconto</li>
+                            <li><i class="fas fa-check"></i> Bônus: E-book de teoria</li>
+                        </ul>
+                        <button class="btn btn-gold btn-block">Comprar Pacote</button>
+                    </div>
+                </div>
+                
+                <div class="combo-card">
+                    <div class="combo-header">
+                        <h3>Pacote Iniciante</h3>
+                        <div class="combo-price">
+                            <span class="old-price">R$ 149,90</span>
+                            <span class="new-price">R$ 129,90</span>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 5 partituras para iniciantes</li>
+                            <li><i class="fas fa-check"></i> Exercícios técnicos</li>
+                            <li><i class="fas fa-check"></i> 13% de desconto</li>
+                            <li><i class="fas fa-check"></i> Guia de estudo</li>
+                        </ul>
+                        <button class="btn btn-gold btn-block">Comprar Pacote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Assine Nossa Newsletter</h2>
+                <p>Receba ofertas exclusivas, novidades e dicas musicais diretamente no seu email.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor email" required>
+                    <button type="submit" class="btn btn-gold">Assinar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="img/logo.png" alt="Partitura na Mão" class="footer-logo">
+                    <p>Partituras de qualidade para músicos exigentes desde 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><img src="img/icon-facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="img/icon-instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="img/icon-twitter.png" alt="Twitter"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Arranjadores</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Parcerias</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Atendimento</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua das Partituras, 123</li>
+                        <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                        <li><i class="fas fa-envelope"></i> contato@partituranamao.com</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Partitura na Mão. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
