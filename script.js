@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Cart Functionality
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+
     function updateCartCount() {
         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         const cartLink = document.querySelector('a[href="carrinho.html"]');
@@ -83,19 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
-    // Add to Cart Functionality - Versão Melhorada
+
     function setupAddToCartButtons() {
         const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
         
         addToCartButtons.forEach(button => {
-            // Remover event listeners antigos para evitar duplicação
             button.removeEventListener('click', addToCartHandler);
-            // Adicionar novo event listener
             button.addEventListener('click', addToCartHandler);
         });
     }
-    
+
     function addToCartHandler() {
         const card = this.closest('.sheet-music-card');
         if (!card) return;
@@ -105,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const priceText = card.querySelector('.price').textContent;
         const itemImage = card.querySelector('.sheet-music-image img')?.src || '';
         
-        // Extrair preço de forma mais robusta
         const itemPrice = parseFloat(
             priceText.replace(/[^\d,]/g, '').replace(',', '.')
         );
@@ -115,14 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Verificar se o item já está no carrinho
         const existingItemIndex = cart.findIndex(item => item.id === itemId);
         
         if (existingItemIndex !== -1) {
-            // Item já existe, incrementar quantidade
             cart[existingItemIndex].quantity += 1;
         } else {
-            // Adicionar novo item
             cart.push({
                 id: itemId,
                 name: itemName,
@@ -132,22 +125,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Atualizar localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Atualizar contador do carrinho
         updateCartCount();
-        
-        // Mostrar notificação
         showModal('Item Adicionado', `${itemName} foi adicionado ao seu carrinho.`);
-        
-        // Debug
-        console.log('Carrinho atualizado:', cart);
     }
-    
-    // Modal Function - Versão Melhorada
+
     function showModal(title, message) {
-        // Fechar modal existente se houver
         const existingModal = document.querySelector('.modal-overlay');
         if (existingModal) existingModal.remove();
         
@@ -174,12 +157,10 @@ document.addEventListener('DOMContentLoaded', function() {
         modalOverlay.appendChild(modal);
         document.body.appendChild(modalOverlay);
         
-        // Adicionar animação
         setTimeout(() => {
             modalOverlay.classList.add('active');
         }, 10);
         
-        // Event listeners para fechar modal
         const closeButtons = modalOverlay.querySelectorAll('.modal-close');
         closeButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -190,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Event listener para o botão "Ver Carrinho"
         const goToCartBtn = modalOverlay.querySelector('#go-to-cart');
         if (goToCartBtn) {
             goToCartBtn.addEventListener('click', function() {
@@ -198,39 +178,38 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
+
     // Cart Page Functionality
     if (document.querySelector('.cart-page')) {
         renderCart();
         
-        // Quantity controls
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.parentNode.querySelector('.quantity-input');
+        // Delegar eventos para elementos dinâmicos
+        document.addEventListener('click', function(e) {
+            // Verificar se o clique foi no botão de remover ou no ícone dentro dele
+            const removeButton = e.target.closest('.remove-item');
+            if (removeButton) {
+                const itemId = removeButton.closest('tr').getAttribute('data-id');
+                removeCartItem(itemId);
+                return;
+            }
+            
+            // Quantity controls
+            if (e.target.classList.contains('quantity-btn')) {
+                const input = e.target.parentNode.querySelector('.quantity-input');
                 let quantity = parseInt(input.value);
                 
-                if (this.classList.contains('decrease')) {
-                    if (quantity > 1) {
-                        quantity--;
-                    }
+                if (e.target.classList.contains('decrease')) {
+                    quantity = Math.max(1, quantity - 1);
                 } else {
                     quantity++;
                 }
                 
                 input.value = quantity;
-                updateCartItem(this.closest('tr').getAttribute('data-id'), quantity);
-            });
-        });
-        
-        // Remove item buttons
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.closest('tr').getAttribute('data-id');
-                removeCartItem(itemId);
-            });
+                updateCartItem(e.target.closest('tr').getAttribute('data-id'), quantity);
+            }
         });
     }
-    
+
     function renderCart() {
         const cartTableBody = document.querySelector('.cart-table tbody');
         const cartSummary = document.querySelector('.cart-summary');
@@ -261,23 +240,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>R$ ${item.price.toFixed(2).replace('.', ',')}</td>
                     <td>
                         <div class="quantity-control">
-                            <button class="quantity-btn decrease">-</button>
+                            <button type="button" class="quantity-btn decrease">-</button>
                             <input type="number" class="quantity-input" value="${item.quantity}" min="1">
-                            <button class="quantity-btn increase">+</button>
+                            <button type="button" class="quantity-btn increase">+</button>
                         </div>
                     </td>
                     <td>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</td>
-                    <td><i class="fas fa-times remove-item"></i></td>
+                    <td><button type="button" class="remove-item"><i class="fas fa-times"></i></button></td>
                 `;
                 
                 cartTableBody.appendChild(row);
             });
         }
         
-        // Update summary
         if (cartSummary) {
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            const discount = 0; // Could add discount logic here
+            const discount = 0;
             const total = subtotal - discount;
             
             document.querySelector('.subtotal-amount').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
@@ -285,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.total-amount').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
     }
-    
+
     function updateCartItem(itemId, quantity) {
         const item = cart.find(item => item.id === itemId);
         if (item) {
@@ -294,14 +272,14 @@ document.addEventListener('DOMContentLoaded', function() {
             renderCart();
         }
     }
-    
+
     function removeCartItem(itemId) {
         cart = cart.filter(item => item.id !== itemId);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
         updateCartCount();
     }
-    
+
     // Difficulty Filter on Instrument Pages
     const difficultyButtons = document.querySelectorAll('.difficulty-btn');
     
@@ -376,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Inicializar botões de adicionar ao carrinho
-    setupAddToCartButtons();
+    // Inicialização
     updateCartCount();
+    setupAddToCartButtons();
 });
