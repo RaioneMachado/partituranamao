@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partituras para Viola | Partitura na Mão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="light-effect"></div>
+    <div class="light-effect-2"></div>
+    
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="../img/logo.png" alt="Partitura na Mão" class="logo">
+                <h1>Partitura na Mão</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#colecoes">Coleções</a></li>
+                    <li><a href="../index.html#combos">Combos</a></li>
+                    <li><a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="instrument-page">
+        <div class="container">
+            <div class="instrument-header">
+                <h1>Partituras para <span>Viola</span></h1>
+                <p>Explore nossa coleção especial de partituras para viola, com repertório que abrange desde peças clássicas até contemporâneas, cuidadosamente adaptadas para todos os níveis de habilidade.</p>
+            </div>
+            
+            <div class="difficulty-filter">
+                <button class="difficulty-btn active" data-difficulty="all">Todas</button>
+                <button class="difficulty-btn" data-difficulty="beginner">Iniciante</button>
+                <button class="difficulty-btn" data-difficulty="intermediate">Intermediário</button>
+                <button class="difficulty-btn" data-difficulty="advanced">Avançado</button>
+            </div>
+
+            <div class="instrument-search-container">
+                <input type="text" class="instrument-search-input" placeholder="Busque por nome da música ou compositor...">
+                <button class="instrument-search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="sheet-music-grid">
+                <!-- Partitura 1 -->
+                <div class="sheet-music-card" data-id="va001" data-difficulty="beginner">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Minueto em Dó Maior">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Minueto em Dó Maior</h3>
+                        <div class="sheet-music-meta">
+                            <span>J.S. Bach</span>
+                            <span class="price">R$ 24,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Iniciante</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 2 -->
+                <div class="sheet-music-card" data-id="va002" data-difficulty="intermediate">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Concerto para Viola em Dó Menor">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Concerto para Viola em Dó Menor</h3>
+                        <div class="sheet-music-meta">
+                            <span>Carl Stamitz</span>
+                            <span class="price">R$ 32,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Intermediário</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 3 -->
+                <div class="sheet-music-card" data-id="va003" data-difficulty="advanced">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Sonata para Viola Op. 11 No. 4">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Sonata para Viola Op. 11 No. 4</h3>
+                        <div class="sheet-music-meta">
+                            <span>Paul Hindemith</span>
+                            <span class="price">R$ 36,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Avançado</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 4 -->
+                <div class="sheet-music-card" data-id="va004" data-difficulty="beginner">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Canção de Ninar">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Canção de Ninar</h3>
+                        <div class="sheet-music-meta">
+                            <span>Johannes Brahms</span>
+                            <span class="price">R$ 19,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Iniciante</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 5 -->
+                <div class="sheet-music-card" data-id="va005" data-difficulty="intermediate">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Concerto para Viola em Sol Maior">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Concerto para Viola em Sol Maior</h3>
+                        <div class="sheet-music-meta">
+                            <span>Georg Philipp Telemann</span>
+                            <span class="price">R$ 34,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Intermediário</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 6 -->
+                <div class="sheet-music-card" data-id="va006" data-difficulty="advanced">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Elegie Op. 44">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Elegie Op. 44</h3>
+                        <div class="sheet-music-meta">
+                            <span>Henri Vieuxtemps</span>
+                            <span class="price">R$ 38,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Avançado</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 7 -->
+                <div class="sheet-music-card" data-id="va007" data-difficulty="beginner">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Ave Maria">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Ave Maria</h3>
+                        <div class="sheet-music-meta">
+                            <span>Franz Schubert</span>
+                            <span class="price">R$ 22,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Iniciante</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partitura 8 -->
+                <div class="sheet-music-card" data-id="va008" data-difficulty="intermediate">
+                    <div class="sheet-music-image">
+                        <img src="../img/partitura-exemplo.jpg" alt="Sonata para Viola e Piano">
+                    </div>
+                    <div class="sheet-music-content">
+                        <h3>Sonata para Viola e Piano</h3>
+                        <div class="sheet-music-meta">
+                            <span>Rebecca Clarke</span>
+                            <span class="price">R$ 35,90</span>
+                        </div>
+                        <div class="sheet-music-actions">
+                            <span>Intermediário</span>
+                            <button class="add-to-cart-btn">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../img/logo.png" alt="Partitura na Mão" class="footer-logo">
+                    <p>Partituras de qualidade para músicos exigentes desde 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><img src="../img/icon-facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="../img/icon-instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="../img/icon-twitter.png" alt="Twitter"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Arranjadores</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Parcerias</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Atendimento</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua das Partituras, 123</li>
+                        <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                        <li><i class="fas fa-envelope"></i> contato@partituranamao.com</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Partitura na Mão. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
