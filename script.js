@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cart Functionality
+    // Cart Functionality - Versão Corrigida
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function updateCartCount() {
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        const existingItemIndex = cart.findIndex(item => item.id === itemId);
+        const existingItemIndex = cart.findIndex(item => String(item.id) === String(itemId));
         
         if (existingItemIndex !== -1) {
             cart[existingItemIndex].quantity += 1;
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Cart Page Functionality
+    // Cart Page Functionality - Versão Corrigida
     if (document.querySelector('.cart-page')) {
         renderCart();
         
@@ -189,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const removeButton = e.target.closest('.remove-item');
             if (removeButton) {
                 const itemId = removeButton.closest('tr').getAttribute('data-id');
+                console.log('Tentando remover item ID:', itemId);
                 removeCartItem(itemId);
                 return;
             }
@@ -230,7 +231,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             cart.forEach(item => {
                 const row = document.createElement('tr');
-                row.setAttribute('data-id', item.id);
+                // Garantir que o ID seja string para consistência
+                row.setAttribute('data-id', String(item.id));
                 
                 row.innerHTML = `
                     <td>
@@ -246,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </td>
                     <td>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</td>
-                    <td><button type="button" class="remove-item"><i class="fas fa-times"></i></button></td>
+                    <td><button type="button" class="remove-item" data-id="${item.id}"><i class="fas fa-times"></i></button></td>
                 `;
                 
                 cartTableBody.appendChild(row);
@@ -265,7 +267,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartItem(itemId, quantity) {
-        const item = cart.find(item => item.id === itemId);
+        // Converter ambos os IDs para string para comparação consistente
+        const item = cart.find(item => String(item.id) === String(itemId));
         if (item) {
             item.quantity = quantity;
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -274,7 +277,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function removeCartItem(itemId) {
-        cart = cart.filter(item => item.id !== itemId);
+        console.log('Carrinho antes de remover:', cart);
+        // Converter ambos os IDs para string para comparação consistente
+        cart = cart.filter(item => String(item.id) !== String(itemId));
+        console.log('Carrinho depois de remover:', cart);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
         updateCartCount();
