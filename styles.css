@@ -1257,7 +1257,7 @@ a {
     }
 }
 
-/* Modal */
+/* Modal Responsivo */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1272,6 +1272,8 @@ a {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    padding: 15px; /* Espaço para evitar que o modal encoste nas bordas */
+    box-sizing: border-box;
 }
 
 .modal-overlay.active {
@@ -1283,11 +1285,15 @@ a {
     background-color: var(--light-text);
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
     max-width: 500px;
-    width: 90%;
+    max-height: 90vh; /* Limita a altura */
+    overflow-y: auto; /* Adiciona scroll se necessário */
     transform: translateY(20px);
     transition: transform 0.3s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal {
@@ -1300,11 +1306,16 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--light-text);
+    z-index: 1;
 }
 
 .modal-header h3 {
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem); /* Tamanho responsivo */
+    margin: 0;
 }
 
 .modal-close {
@@ -1314,6 +1325,8 @@ a {
     cursor: pointer;
     color: var(--gray-text);
     transition: color 0.3s ease;
+    padding: 5px;
+    line-height: 1;
 }
 
 .modal-close:hover {
@@ -1322,67 +1335,136 @@ a {
 
 .modal-body {
     padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .modal-footer {
-    padding: 20px;
+    padding: 15px 20px;
     border-top: 1px solid #eee;
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+    position: sticky;
+    bottom: 0;
+    background-color: var(--light-text);
 }
-/* Search Box in Instrument Pages */
+
+/* Search Box Responsiva */
 .instrument-search-container {
     max-width: 600px;
     margin: 0 auto 30px;
     position: relative;
+    width: 100%;
+    padding: 0 15px; /* Adiciona padding nas laterais */
+    box-sizing: border-box;
 }
 
 .instrument-search-container input {
     width: 100%;
-    padding: 15px 25px;
+    padding: 12px 20px;
+    padding-right: 50px; /* Espaço para o ícone */
     border: 2px solid var(--primary-color);
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1rem); /* Tamanho responsivo */
     outline: none;
-    padding-right: 50px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.instrument-search-container input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
 
 .instrument-search-container button {
     position: absolute;
-    right: 15px;
+    right: 25px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 1.2rem); /* Tamanho responsivo */
     cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .instrument-search-container button:hover {
     color: var(--accent-color);
 }
-.remove-item {
-    cursor: pointer;
-    color: #d9534f;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
 
-.remove-item:hover {
-    color: #c9302c;
-}
+/* Botão de Remoção Responsivo */
 .remove-item {
     background: none;
     border: none;
     color: #d9534f;
     cursor: pointer;
-    font-size: 1.2rem;
-    padding: 5px;
+    font-size: clamp(1rem, 4vw, 1.2rem); /* Tamanho responsivo */
+    padding: 8px; /* Área de toque maior */
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px; /* Tamanho mínimo para toque */
+    min-height: 40px;
 }
 
 .remove-item:hover {
     color: #c9302c;
+}
+
+/* Media Queries para ajustes específicos */
+@media (max-width: 768px) {
+    .modal {
+        max-width: 90%; /* Ocupa mais espaço em telas menores */
+    }
+    
+    .modal-footer {
+        justify-content: center; /* Centraliza os botões */
+    }
+    
+    .instrument-search-container {
+        margin-bottom: 20px;
+    }
+    
+    .instrument-search-container input {
+        padding: 10px 15px;
+        padding-right: 45px;
+    }
+    
+    .instrument-search-container button {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px;
+    }
+    
+    .modal-footer {
+        flex-direction: column; /* Empilha os botões */
+        gap: 10px;
+    }
+    
+    .instrument-search-container input {
+        padding: 10px 15px;
+        padding-right: 40px;
+    }
+    
+    .instrument-search-container button {
+        right: 15px;
+    }
+    
+    .remove-item {
+        min-width: 36px;
+        min-height: 36px;
+    }
 }
