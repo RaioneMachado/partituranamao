@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cart Functionality - Versão Corrigida
+    // Cart Functionality
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function updateCartCount() {
@@ -82,6 +82,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+
+        // Atualizar o botão flutuante do carrinho
+        const floatingCartBtn = document.querySelector('.floating-cart-btn');
+        if (floatingCartBtn) {
+            const floatingCartCount = floatingCartBtn.querySelector('.cart-count') || document.createElement('span');
+            floatingCartCount.className = 'cart-count';
+            
+            if (cartCount > 0) {
+                floatingCartCount.textContent = cartCount;
+                if (!floatingCartBtn.querySelector('.cart-count')) {
+                    floatingCartBtn.appendChild(floatingCartCount);
+                }
+            } else {
+                const existingBadge = floatingCartBtn.querySelector('.cart-count');
+                if (existingBadge) {
+                    existingBadge.remove();
+                }
+            }
+        }
     }
 
     function setupAddToCartButtons() {
@@ -94,14 +113,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addToCartHandler() {
-        const card = this.closest('.sheet-music-card');
-        if (!card) return;
-        
-        const itemId = card.getAttribute('data-id');
-        const itemName = card.querySelector('h3').textContent;
-        const priceText = card.querySelector('.price').textContent;
-        const itemImage = card.querySelector('.sheet-music-image img')?.src || '';
-        
+        let itemId, itemName, priceText, itemImage;
+
+        // Verifica se é o botão grande (com data-attributes)
+        if (this.hasAttribute('data-id') && 
+            this.hasAttribute('data-name') && 
+            this.hasAttribute('data-price')) {
+            
+            // Pega os dados diretamente do botão grande
+            itemId = this.getAttribute('data-id');
+            itemName = this.getAttribute('data-name');
+            priceText = this.getAttribute('data-price');
+            itemImage = this.getAttribute('data-image') || '';
+        } 
+        // Se não for o botão grande, assume que está dentro de um card
+        else {
+            const card = this.closest('.sheet-music-card');
+            if (!card) {
+                console.error('Botão não está dentro de um card e não tem data-attributes');
+                return;
+            }
+            
+            itemId = card.getAttribute('data-id');
+            itemName = card.querySelector('h3').textContent;
+            priceText = card.querySelector('.price').textContent;
+            itemImage = card.querySelector('.sheet-music-image img')?.src || '';
+        }
+
+        // Processa o preço (remove R$, espaços e converte vírgula para ponto)
         const itemPrice = parseFloat(
             priceText.replace(/[^\d,]/g, '').replace(',', '.')
         );
@@ -111,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Verifica se o item já está no carrinho
         const existingItemIndex = cart.findIndex(item => String(item.id) === String(itemId));
         
         if (existingItemIndex !== -1) {
@@ -179,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Cart Page Functionality - Versão Corrigida
+    // Cart Page Functionality
     if (document.querySelector('.cart-page')) {
         renderCart();
         
@@ -189,12 +229,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const removeButton = e.target.closest('.remove-item');
             if (removeButton) {
                 const itemId = removeButton.closest('tr').getAttribute('data-id');
-                console.log('Tentando remover item ID:', itemId);
                 removeCartItem(itemId);
                 return;
             }
             
-            // Quantity controls
+            // Controles de quantidade
             if (e.target.classList.contains('quantity-btn')) {
                 const input = e.target.parentNode.querySelector('.quantity-input');
                 let quantity = parseInt(input.value);
@@ -231,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             cart.forEach(item => {
                 const row = document.createElement('tr');
-                // Garantir que o ID seja string para consistência
                 row.setAttribute('data-id', String(item.id));
                 
                 row.innerHTML = `
@@ -267,20 +305,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartItem(itemId, quantity) {
-        // Converter ambos os IDs para string para comparação consistente
         const item = cart.find(item => String(item.id) === String(itemId));
         if (item) {
             item.quantity = quantity;
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
+            updateCartCount();
         }
     }
 
     function removeCartItem(itemId) {
-        console.log('Carrinho antes de remover:', cart);
-        // Converter ambos os IDs para string para comparação consistente
         cart = cart.filter(item => String(item.id) !== String(itemId));
-        console.log('Carrinho depois de remover:', cart);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
         updateCartCount();
@@ -360,54 +395,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Floating Cart Button
+    function setupFloatingCartButton() {
+        let floatingCartBtn = document.querySelector('.floating-cart-btn');
+        
+        if (!floatingCartBtn) {
+            floatingCartBtn = document.createElement('button');
+            floatingCartBtn.className = 'floating-cart-btn';
+            floatingCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+            document.body.appendChild(floatingCartBtn);
+            
+            floatingCartBtn.addEventListener('click', function() {
+                window.location.href = 'carrinho.html';
+            });
+        }
+    }
+    
     // Inicialização
     updateCartCount();
     setupAddToCartButtons();
-});
-/* Adicione isso ao seu JavaScript existente */
-document.addEventListener('DOMContentLoaded', function() {
-    // Selecionar ou criar o botão flutuante
-    let floatingCartBtn = document.querySelector('.floating-cart-btn');
-    
-    if (!floatingCartBtn) {
-        floatingCartBtn = document.createElement('button');
-        floatingCartBtn.className = 'floating-cart-btn';
-        floatingCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i>';
-        document.body.appendChild(floatingCartBtn);
-    }
-
-    // Criar ou selecionar o badge do contador
-    let floatingCartCount = floatingCartBtn.querySelector('.cart-count');
-    
-    if (!floatingCartCount) {
-        floatingCartCount = document.createElement('span');
-        floatingCartCount.className = 'cart-count';
-        floatingCartBtn.appendChild(floatingCartCount);
-    }
-
-    // Modificar a função updateCartCount existente
-    const originalUpdateCartCount = window.updateCartCount || function() {};
-    
-    window.updateCartCount = function() {
-        // Chamar a função original
-        originalUpdateCartCount();
-        
-        // Atualizar o contador do botão flutuante
-        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-        
-        if (cartCount > 0) {
-            floatingCartCount.textContent = cartCount;
-            floatingCartCount.style.display = 'flex';
-        } else {
-            floatingCartCount.style.display = 'none';
-        }
-    };
-
-    // Adicionar evento de clique para redirecionar
-    floatingCartBtn.addEventListener('click', function() {
-        window.location.href = 'carrinho.html';
-    });
-
-    // Chamar a função inicialmente
-    updateCartCount();
+    setupFloatingCartButton();
 });

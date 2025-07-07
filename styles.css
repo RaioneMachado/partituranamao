@@ -1970,35 +1970,89 @@ a {
     }
 }
 /* Botão grande de adicionar ao carrinho */
-.big-add-to-cart-btn {
+.sheet-purchase-actions {
+    margin: 25px 0;
     width: 100%;
-    padding: 15px;
+}
+
+.sheet-purchase-actions .add-to-cart-btn {
+    width: 100%;
+    padding: 18px 25px;
     background-color: var(--accent-color);
     color: var(--primary-color);
     border: none;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.big-add-to-cart-btn:hover {
+.sheet-purchase-actions .add-to-cart-btn i {
+    font-size: 1.3rem;
+}
+
+.sheet-purchase-actions .add-to-cart-btn:hover {
     background-color: #c19d2e;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sheet-purchase-actions .add-to-cart-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito de loading (opcional) */
+.sheet-purchase-actions .add-to-cart-btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.sheet-purchase-actions .add-to-cart-btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Ajustes para tablets */
+@media (max-width: 768px) {
+    .sheet-purchase-actions .add-to-cart-btn {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
 }
 
 /* Ajustes para mobile */
 @media (max-width: 576px) {
-    .big-add-to-cart-btn {
-        padding: 12px;
+    .sheet-purchase-actions {
+        margin: 20px 0;
+    }
+    
+    .sheet-purchase-actions .add-to-cart-btn {
+        padding: 14px 16px;
         font-size: 1rem;
+        gap: 8px;
+    }
+    
+    .sheet-purchase-actions .add-to-cart-btn i {
+        font-size: 1.1rem;
     }
 }
