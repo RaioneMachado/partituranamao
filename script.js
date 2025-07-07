@@ -364,3 +364,50 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCartCount();
     setupAddToCartButtons();
 });
+/* Adicione isso ao seu JavaScript existente */
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecionar ou criar o botão flutuante
+    let floatingCartBtn = document.querySelector('.floating-cart-btn');
+    
+    if (!floatingCartBtn) {
+        floatingCartBtn = document.createElement('button');
+        floatingCartBtn.className = 'floating-cart-btn';
+        floatingCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+        document.body.appendChild(floatingCartBtn);
+    }
+
+    // Criar ou selecionar o badge do contador
+    let floatingCartCount = floatingCartBtn.querySelector('.cart-count');
+    
+    if (!floatingCartCount) {
+        floatingCartCount = document.createElement('span');
+        floatingCartCount.className = 'cart-count';
+        floatingCartBtn.appendChild(floatingCartCount);
+    }
+
+    // Modificar a função updateCartCount existente
+    const originalUpdateCartCount = window.updateCartCount || function() {};
+    
+    window.updateCartCount = function() {
+        // Chamar a função original
+        originalUpdateCartCount();
+        
+        // Atualizar o contador do botão flutuante
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        if (cartCount > 0) {
+            floatingCartCount.textContent = cartCount;
+            floatingCartCount.style.display = 'flex';
+        } else {
+            floatingCartCount.style.display = 'none';
+        }
+    };
+
+    // Adicionar evento de clique para redirecionar
+    floatingCartBtn.addEventListener('click', function() {
+        window.location.href = 'carrinho.html';
+    });
+
+    // Chamar a função inicialmente
+    updateCartCount();
+});

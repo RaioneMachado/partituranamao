@@ -1468,3 +1468,537 @@ a {
         min-height: 36px;
     }
 }
+/* Botão Flutuante do Carrinho (Mobile) - Versão Corrigida */
+.floating-cart-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.floating-cart-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.floating-cart-btn i {
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.floating-cart-btn .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+/* Mostrar apenas em mobile */
+@media (max-width: 768px) {
+    .floating-cart-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.floating-cart-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-cart-btn .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+@media (max-width: 768px) {
+    .floating-cart-btn {
+        display: flex;
+    }
+}
+/* Página de Partitura Individual */
+.sheet-music-page {
+    padding: 100px 0 60px;
+    background-color: var(--section-bg);
+}
+
+.back-button-container {
+    margin-bottom: 30px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: var(--accent-color);
+}
+
+.sheet-music-container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.sheet-info {
+    flex: 2;
+}
+
+.sheet-purchase {
+    flex: 1;
+    position: relative;
+}
+
+.sheet-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.sheet-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    color: var(--gray-text);
+}
+
+.difficulty-badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.difficulty-badge.beginner {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.sheet-description, 
+.sheet-details,
+.sheet-educational {
+    margin-bottom: 30px;
+}
+
+.sheet-description h2, 
+.sheet-details h2,
+.sheet-educational h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sheet-description h2::after, 
+.sheet-details h2::after,
+.sheet-educational h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.sheet-description p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.sheet-details ul,
+.sheet-educational ul {
+    list-style: none;
+}
+
+.sheet-details li,
+.sheet-educational li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.sheet-details li::before,
+.sheet-educational li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.sheet-music-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.sheet-music-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sheet-music-content {
+    padding: 15px;
+}
+
+.sheet-music-meta {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.sheet-music-meta .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.sheet-music-meta .old-price {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #999;
+}
+
+.sheet-music-meta .discount {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.sheet-music-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.view-sheet-btn {
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-sheet-btn:hover {
+    background-color: #2a311b;
+    transform: translateY(-2px);
+}
+
+.add-to-cart-btn {
+    padding: 8px 12px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c19d2e;
+    transform: translateY(-2px);
+}
+
+.delivery-info {
+    background-color: var(--light-accent);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+.sheet-preview {
+    background-color: var(--light-text);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sheet-preview h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.preview-pages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.preview-pages img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.preview-pages a:hover img {
+    transform: scale(1.05);
+}
+
+.sheet-video {
+    margin-bottom: 60px;
+}
+
+.sheet-video h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.sheet-video h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-description {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--gray-text);
+    font-style: italic;
+}
+
+.related-sheets h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.related-sheets h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.sheet-music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .sheet-music-container {
+        flex-direction: column;
+    }
+    
+    .sheet-info, .sheet-purchase {
+        flex: none;
+        width: 100%;
+    }
+    
+    .sheet-purchase {
+        position: sticky;
+        top: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sheet-header h1 {
+        font-size: 2rem;
+    }
+    
+    .sheet-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .preview-pages {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .sheet-music-page {
+        padding: 80px 0 40px;
+    }
+    
+    .sheet-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .sheet-music-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .action-buttons {
+        width: 100%;
+    }
+    
+    .view-sheet-btn,
+    .add-to-cart-btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .sheet-video h2, .related-sheets h2 {
+        font-size: 1.8rem;
+    }
+}
+/* Botão grande de adicionar ao carrinho */
+.big-add-to-cart-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.big-add-to-cart-btn:hover {
+    background-color: #c19d2e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustes para mobile */
+@media (max-width: 576px) {
+    .big-add-to-cart-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
