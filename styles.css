@@ -2939,7 +2939,7 @@ a {
     transform: rotate(90deg);
 }
 
-/* Botão Flutuante do Carrinho (Mobile) - Versão Aprimorada */
+/* Botão Flutuante do Carrinho (Mobile) - Mantendo seu estilo atual */
 .floating-cart-btn {
     display: none;
     position: fixed;
@@ -2959,22 +2959,48 @@ a {
     transition: var(--transition);
 }
 
-.floating-cart-btn:hover {
+/* Botão de Busca Flutuante (Mobile) - Estilo compatível */
+.mobile-search-btn {
+    display: none;
+    position: fixed;
+    bottom: 120px; /* Posicionado acima do botão do carrinho */
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+/* Efeitos hover para ambos os botões */
+.floating-cart-btn:hover, 
+.mobile-search-btn:hover {
     background-color: var(--accent-color);
     color: var(--primary-color);
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.floating-cart-btn:active {
+.floating-cart-btn:active, 
+.mobile-search-btn:active {
     transform: translateY(-2px) scale(1.05);
 }
 
-.floating-cart-btn i {
+/* Ícones */
+.floating-cart-btn i, 
+.mobile-search-btn i {
     font-size: 1.8rem;
     position: relative;
 }
 
+/* Contador do carrinho (mantendo seu estilo) */
 .floating-cart-btn .cart-count {
     position: absolute;
     top: -5px;
@@ -3005,12 +3031,40 @@ a {
     }
 }
 
+/* Mostrar apenas em mobile */
 @media (max-width: 768px) {
-    .floating-cart-btn {
+    .floating-cart-btn,
+    .mobile-search-btn {
         display: flex;
     }
+    
+    /* Container de busca quando aberto */
+    .instrument-search-container {
+        display: none;
+        position: fixed;
+        bottom: 200px;
+        right: 30px;
+        width: calc(100% - 60px);
+        max-width: 400px;
+        background: white;
+        padding: 20px;
+        z-index: 998;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 15px;
+    }
+    
+    .instrument-search-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+    
+    .instrument-search-btn {
+        display: none;
+    }
 }
-
 /* Página de Partitura Individual - Aprimorada */
 .sheet-music-page {
     padding: 120px 0 80px;
@@ -3954,3 +4008,4 @@ a {
         border-color: var(--accent-color);
     }
 }
+

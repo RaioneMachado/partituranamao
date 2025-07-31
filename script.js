@@ -411,8 +411,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Floating Search Button (Mobile)
+    function setupMobileSearchButton() {
+        if (window.innerWidth <= 768) {
+            let mobileSearchBtn = document.querySelector('.mobile-search-btn');
+            
+            if (!mobileSearchBtn) {
+                mobileSearchBtn = document.createElement('button');
+                mobileSearchBtn.className = 'mobile-search-btn';
+                mobileSearchBtn.innerHTML = '<i class="fas fa-search"></i>';
+                document.body.appendChild(mobileSearchBtn);
+                
+                mobileSearchBtn.addEventListener('click', function() {
+                    const searchContainer = document.querySelector('.instrument-search-container');
+                    if (searchContainer.style.display === 'block') {
+                        searchContainer.style.display = 'none';
+                    } else {
+                        searchContainer.style.display = 'block';
+                        // Foca no input quando aberto
+                        const input = searchContainer.querySelector('input');
+                        if (input) input.focus();
+                    }
+                });
+            }
+        } else {
+            // Remove o botão de busca se não for mobile
+            const mobileSearchBtn = document.querySelector('.mobile-search-btn');
+            if (mobileSearchBtn) {
+                mobileSearchBtn.remove();
+            }
+            // Garante que a barra de busca esteja visível
+            const searchContainer = document.querySelector('.instrument-search-container');
+            if (searchContainer) {
+                searchContainer.style.display = '';
+            }
+        }
+    }
+    
     // Inicialização
     updateCartCount();
     setupAddToCartButtons();
     setupFloatingCartButton();
+    setupMobileSearchButton();
+    
+    // Atualizar quando a janela é redimensionada
+    window.addEventListener('resize', function() {
+        setupMobileSearchButton();
+    });
 });
